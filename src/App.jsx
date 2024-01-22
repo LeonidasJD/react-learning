@@ -20,7 +20,6 @@ function App() {
       <Header></Header>
       <main>
         <h2>Time to get started!</h2>
-        <h3>Milan</h3>
       </main>
     </div>
   );
