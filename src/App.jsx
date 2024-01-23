@@ -1,11 +1,18 @@
-import Header from "./components/Header.jsx";
+import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
+import TabButton from "./components/TabButton.jsx";
 
 function App() {
+  function handleClick(selectedButton){
+    //selectedButton=> 'components', 'jsx', 'props', 'state'
+    if (selectedButton === 'components'){
+      console.log('You clicked components button');
+    }
+  }
   return (
     <div>
-      <Header></Header>
+      <Header />
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
@@ -31,6 +38,17 @@ function App() {
               img={CORE_CONCEPTS[0].image}
             />
           </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+          <TabButton onSelect={()=> handleClick('components')}>Components</TabButton>
+          <TabButton onSelect={()=>handleClick('jsx')}>JSX</TabButton>
+          <TabButton onSelect={()=>handleClick('props')}>Props</TabButton>
+          <TabButton onSelect={()=>handleClick('state')}>State</TabButton>
+          </menu>
+          Dynamic content
         </section>
       </main>
     </div>
