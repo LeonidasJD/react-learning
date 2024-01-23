@@ -3,6 +3,7 @@ import CoreConcept from "./components/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
 import TabButton from "./components/TabButton.jsx";
 
+
 function App() {
   function handleClick(selectedButton){
     //selectedButton=> 'components', 'jsx', 'props', 'state'
