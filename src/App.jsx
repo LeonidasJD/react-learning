@@ -2,14 +2,14 @@ import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
 import TabButton from "./components/TabButton.jsx";
-
+import { useState } from "react";
 
 function App() {
-  function handleClick(selectedButton){
+  let [selectedTopic, setSelectedTopic] = useState("Please click button."); // SELECTED TOPIC JESTE POCETNO STANJE KOJE SE PRIKAZUJE A KADA IZVRSIMO FUNKCIJU handleClick novu vrednost pakujemo u setSelectedTopic
+
+  function handleClick(selectedButton) {
     //selectedButton=> 'components', 'jsx', 'props', 'state'
-    if (selectedButton === 'components'){
-      console.log('You clicked components button');
-    }
+    setSelectedTopic(selectedButton);
   }
   return (
     <div>
@@ -44,12 +44,15 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-          <TabButton onSelect={()=> handleClick('components')}>Components</TabButton>
-          <TabButton onSelect={()=>handleClick('jsx')}>JSX</TabButton>
-          <TabButton onSelect={()=>handleClick('props')}>Props</TabButton>
-          <TabButton onSelect={()=>handleClick('state')}>State</TabButton>
+            <TabButton onSelect={() => handleClick("components")}>
+              Components
+            </TabButton>
+            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          Dynamic content
+          {selectedTopic}
+          {/**POCETNO STANJE useState-a je selectedTopic */}
         </section>
       </main>
     </div>
