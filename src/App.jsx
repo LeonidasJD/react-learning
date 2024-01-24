@@ -3,9 +3,10 @@ import CoreConcept from "./components/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
 import TabButton from "./components/TabButton.jsx";
 import { useState } from "react";
+import { EXAMPLES } from "./data.js";
 
 function App() {
-  let [selectedTopic, setSelectedTopic] = useState("Please click button."); // SELECTED TOPIC JESTE POCETNO STANJE KOJE SE PRIKAZUJE A KADA IZVRSIMO FUNKCIJU handleClick novu vrednost pakujemo u setSelectedTopic
+  let [selectedTopic, setSelectedTopic] = useState("components"); // SELECTED TOPIC JESTE POCETNO STANJE KOJE SE PRIKAZUJE A KADA IZVRSIMO FUNKCIJU handleClick novu vrednost pakujemo u setSelectedTopic
 
   function handleClick(selectedButton) {
     //selectedButton=> 'components', 'jsx', 'props', 'state'
@@ -51,7 +52,11 @@ function App() {
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <p>{EXAMPLES[selectedTopic].title}</p>
+            <pre>{EXAMPLES[selectedTopic].description}</pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </div>
           {/**POCETNO STANJE useState-a je selectedTopic */}
         </section>
       </main>
