@@ -5,13 +5,16 @@ import TabButton from "./components/TabButton.jsx";
 import { useState } from "react";
 import { EXAMPLES } from "./data.js";
 
+
 function App() {
-  let [selectedTopic, setSelectedTopic] = useState("components"); // SELECTED TOPIC JESTE POCETNO STANJE KOJE SE PRIKAZUJE A KADA IZVRSIMO FUNKCIJU handleClick novu vrednost pakujemo u setSelectedTopic
+  let [selectedTopic, setSelectedTopic] = useState(); // SELECTED TOPIC JESTE POCETNO STANJE KOJE SE PRIKAZUJE A KADA IZVRSIMO FUNKCIJU handleClick novu vrednost pakujemo u setSelectedTopic
+
 
   function handleClick(selectedButton) {
     //selectedButton=> 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
   }
+
   return (
     <div>
       <Header />
@@ -19,6 +22,14 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
+           {CORE_CONCEPTS.map((conceptItem)=>(
+            <CoreConcept
+            title={conceptItem.title}
+            description={conceptItem.description}
+            img={conceptItem.image}
+          />/**PRIMER KAKO DA NE PISEMO 4 PUTA ISTU KOMPONENTU VEC DA PRODJEMO KROZ NIZ I ISPISEMO INFORMACIJE IZ NIZA KAO U ANGULARU ngFor */
+           
+           ))} 
             <CoreConcept
               title={CORE_CONCEPTS[0].title} //kreiranje vrednosti komponente pomocu PROPS-A. TITLE, DESCRIPTION,IMG SU PROPSOVI.
               description={CORE_CONCEPTS[0].description}
@@ -35,9 +46,9 @@ function App() {
               img={CORE_CONCEPTS[2].image}
             />
             <CoreConcept
-              title={CORE_CONCEPTS[0].title}
-              description={CORE_CONCEPTS[0].description}
-              img={CORE_CONCEPTS[0].image}
+              title={CORE_CONCEPTS[3].title}
+              description={CORE_CONCEPTS[3].description}
+              img={CORE_CONCEPTS[3].image}
             />
           </ul>
         </section>
@@ -45,21 +56,27 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleClick("components")}>
+            <TabButton isSelected={selectedTopic === "components"} onSelect={() => handleClick("components")}>
               Components
-            </TabButton>
-            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
+            </TabButton> 
+            <TabButton isSelected={selectedTopic === "jsx"} onSelect={() => handleClick("jsx")}>JSX</TabButton>{/**proveravamo da li je stanje jsx ako jeste onda je is selected true i postavlja se klasa "active na dugme" */}
+            <TabButton isSelected={selectedTopic === "props"} onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === "state"} onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          <div id="tab-content">
+        <div>
+          {!selectedTopic ? <p>Please selec a topic!</p> : null}
+
+          {selectedTopic ? <div id="tab-content">
             <p>{EXAMPLES[selectedTopic].title}</p>
             <pre>{EXAMPLES[selectedTopic].description}</pre>
             <code>{EXAMPLES[selectedTopic].code}</code>
-          </div>
+          </div> : null}
           {/**POCETNO STANJE useState-a je selectedTopic */}
+          </div>
         </section>
+        
       </main>
+      
     </div>
   );
 }
