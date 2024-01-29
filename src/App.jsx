@@ -1,9 +1,8 @@
 import Header from "./components/Header/Header.jsx";
-import CoreConcept from "./components/CoreConcept.jsx";
-import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
 import TabButton from "./components/TabButton.jsx";
 import { useState,Fragment } from "react";
 import { EXAMPLES } from "./data.js";
+import CoreConcepts from "./components/CoreConcepts.jsx";
 
 
 function App() {
@@ -19,40 +18,8 @@ function App() {
     <Fragment>
       <Header />
       <main>
-        <section id="core-concepts">
-          <h2>Core Concepts</h2>
-          <ul>
-           {CORE_CONCEPTS.map((conceptItem)=>(
-            <CoreConcept
-            title={conceptItem.title}
-            description={conceptItem.description}
-            img={conceptItem.image}
-          />/**PRIMER KAKO DA NE PISEMO 4 PUTA ISTU KOMPONENTU VEC DA PRODJEMO KROZ NIZ I ISPISEMO INFORMACIJE IZ NIZA KAO U ANGULARU ngFor */
-           
-           ))} 
-            <CoreConcept
-              title={CORE_CONCEPTS[0].title} //kreiranje vrednosti komponente pomocu PROPS-A. TITLE, DESCRIPTION,IMG SU PROPSOVI.
-              description={CORE_CONCEPTS[0].description}
-              img={CORE_CONCEPTS[0].image}
-            />
-            <CoreConcept
-              title={CORE_CONCEPTS[1].title}
-              description={CORE_CONCEPTS[1].description}
-              img={CORE_CONCEPTS[1].image}
-            />
-            <CoreConcept
-              title={CORE_CONCEPTS[2].title}
-              description={CORE_CONCEPTS[2].description}
-              img={CORE_CONCEPTS[2].image}
-            />
-            <CoreConcept
-              title={CORE_CONCEPTS[3].title}
-              description={CORE_CONCEPTS[3].description}
-              img={CORE_CONCEPTS[3].image}
-            />
-          </ul>
-        </section>
-
+        
+      <CoreConcepts />
         <section id="examples">
           <h2>Examples</h2>
           <menu>
