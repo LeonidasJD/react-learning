@@ -13,7 +13,7 @@ export default function Examples (){
       setSelectedTopic(selectedButton);
     }
     return (
-        <Section text={"Examples"} id="examples" >
+        <Section text={"Examples"} id="examples" className={"myClass"}>
         
         <menu>
           <TabButton isSelected={selectedTopic === "components"} onSelect={() => handleClick("components")}>
