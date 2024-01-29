@@ -2,7 +2,7 @@ import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"; //IMPORTOVAN NIZ OBJEKATA IZ FAJLA
 import TabButton from "./components/TabButton.jsx";
-import { useState } from "react";
+import { useState,Fragment } from "react";
 import { EXAMPLES } from "./data.js";
 
 
@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <div>
+    <Fragment>
       <Header />
       <main>
         <section id="core-concepts">
@@ -77,7 +77,7 @@ function App() {
         
       </main>
       
-    </div>
+    </Fragment>
   );
 }
 
