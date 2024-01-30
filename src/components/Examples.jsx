@@ -2,6 +2,7 @@ import TabButton from "./TabButton";
 import { EXAMPLES } from "../data";
 import {useState} from "react";
 import Section from "./Section.jsx";
+import Tabs from "./Tabs.jsx";
 
 
 export default function Examples (){
@@ -23,7 +24,8 @@ export default function Examples (){
           <TabButton isSelected={selectedTopic === "props"} onSelect={() => handleClick("props")}>Props</TabButton>
           <TabButton isSelected={selectedTopic === "state"} onSelect={() => handleClick("state")}>State</TabButton>
         </menu>
-      <div>
+        <Tabs>
+        <div>
         {!selectedTopic ? <p>Please selec a topic!</p> : null}
 
         {selectedTopic ? <div id="tab-content">
@@ -33,6 +35,8 @@ export default function Examples (){
         </div> : null}
         {/**POCETNO STANJE useState-a je selectedTopic */}
         </div>
+        </Tabs>
+      
       </Section>
     );
 }
