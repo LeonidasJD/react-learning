@@ -24,6 +24,7 @@ export default function Examples (){
           <TabButton isSelected={selectedTopic === "props"} onSelect={() => handleClick("props")}>Props</TabButton>
           <TabButton isSelected={selectedTopic === "state"} onSelect={() => handleClick("state")}>State</TabButton>
         </menu>
+        
         <Tabs>
         <div>
         {!selectedTopic ? <p>Please selec a topic!</p> : null}
